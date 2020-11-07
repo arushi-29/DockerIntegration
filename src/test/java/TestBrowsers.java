@@ -46,7 +46,7 @@ public class TestBrowsers {
 	}
 
 	@Test(priority = 0)
-	public static void Login() {
+	public static void TestIntegration() {
 
 		wait = new WebDriverWait(driver, 40);
 		driver.findElement(By.name("q")).sendKeys("Selenium");
