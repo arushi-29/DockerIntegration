@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +18,7 @@ public class TestBrowsers {
 
 	public static WebDriver driver;
 	public static WebDriverWait wait;
-	String testurl = "https://google.com";
+	static String testurl = "https://google.com";
 
 	@Parameters({"browser"})
 	@BeforeClass
@@ -25,17 +26,18 @@ public class TestBrowsers {
 	{
 		if(Browser.equalsIgnoreCase("chrome"))
 		{
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--start-maximized");
-			options.setCapability(ChromeOptions.CAPABILITY, options);
-			options.setCapability("browserName", "chrome");
-			options.setCapability("acceptSslCerts", "true");
-			options.setCapability("javascriptEnabled", "true");		
-			DesiredCapabilities cap = DesiredCapabilities.chrome();
-			options.merge(cap);
+			DesiredCapabilities caps = new DesiredCapabilities();
+			caps.setCapability(CapabilityType.BROWSER_NAME, "chrome");
+			caps.setCapability("zal:name", "myTestName");
+			caps.setCapability("zal:build", "myTestBuild");
+			caps.setCapability("zal:tz", "Europe/Berlin");
+			caps.setCapability("zal:screenResolution", "1280x720");
+			caps.setCapability("zal:idleTimeout", 180);
+			caps.setCapability("zal:recordVideo", false);  
+			
 			try
 			{
-				driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+				driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
 			}
 			catch(Exception e)
 			{
@@ -48,9 +50,10 @@ public class TestBrowsers {
 	@Test(priority = 0)
 	public static void TestIntegration() {
 
+		driver.get(testurl);
 		wait = new WebDriverWait(driver, 40);
 		driver.findElement(By.name("q")).sendKeys("Selenium");
-		driver.findElement(By.className("Tg7LZd")).sendKeys(Keys.ENTER);
+		driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
 		
 	}
 

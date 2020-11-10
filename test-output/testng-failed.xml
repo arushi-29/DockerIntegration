@@ -6,7 +6,7 @@
       <class name="TestBrowsers">
         <methods>
           <include name="FirstRun"/>
-          <include name="Login"/>
+          <include name="TestIntegration"/>
         </methods>
       </class> <!-- TestBrowsers -->
     </classes>
