@@ -33,7 +33,7 @@ public class TestBrowsers {
 			caps.setCapability("zal:tz", "Europe/Berlin");
 			caps.setCapability("zal:screenResolution", "1280x720");
 			caps.setCapability("zal:idleTimeout", 180);
-			caps.setCapability("zal:recordVideo", false);  
+			caps.setCapability("zal:recordVideo", true);  
 			
 			try
 			{
