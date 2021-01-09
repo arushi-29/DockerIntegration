@@ -29,7 +29,7 @@ public class TestBrowsers {
 			DesiredCapabilities caps = new DesiredCapabilities();
 			caps.setCapability(CapabilityType.BROWSER_NAME, "chrome");
 			caps.setCapability("zal:name", "NewTestName");
-			caps.setCapability("zal:build", "myTestBuild");
+			caps.setCapability("zal:build", "NewTestBuild");
 			caps.setCapability("zal:tz", "Europe/Berlin");
 			caps.setCapability("zal:screenResolution", "1280x720");
 			caps.setCapability("zal:idleTimeout", 180);
