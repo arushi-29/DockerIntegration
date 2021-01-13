@@ -52,7 +52,7 @@ public class TestBrowsers {
 
 		driver.get(testurl);
 		wait = new WebDriverWait(driver, 40);
-		driver.findElement(By.name("q")).sendKeys("zalenium");
+		driver.findElement(By.name("q")).sendKeys("zalenium automation");
 		driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
 		
 	}
